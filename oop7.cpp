@@ -68,7 +68,7 @@ int main()
     complex c3 = complex(0,0);
     complex c2,c1;
     cout<<endl<<"Choose option";
-    cout<<endl<<"(+)  AAddition";
+    cout<<endl<<"(+)  Addition";
     cout<<endl<<"(-)  Substraction";
     cout<<endl<<"(*)  Multiplication";
     cout<<endl<<"(/)  Devision";
