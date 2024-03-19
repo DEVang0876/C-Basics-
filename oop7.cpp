@@ -1,11 +1,10 @@
 #include<iostream>
 using namespace std;
-
 class complex
 {
     float real,img;
     static int count;
-public:
+    public:
     void printcox();
     complex(); 
     complex(float a, float b); 
@@ -79,10 +78,10 @@ int main()
     case 43:
         c3=c1+c2;
         break;
-    case 42:
-        c3=c1-c2;
-        break;
     case 45:
+        c3=c2-c1;
+        break;
+    case 42:
         c3=c1*c2;
         break;
     case 47:
