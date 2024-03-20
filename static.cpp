@@ -1,3 +1,4 @@
+//STATIC MEMBER FUNCTION AND STATIC AVRIABLE
 #include<iostream>
 #include<cstring>
 using namespace std;
