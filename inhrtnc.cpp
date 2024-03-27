@@ -1,4 +1,5 @@
 #include<iostream>
+//devang dhandhukya 
 using namespace std;
 int main();
 class A
@@ -12,7 +13,6 @@ class B: public A
     int b;
     public:
     B(){b=5;}
-
 };
 int main()
 {
