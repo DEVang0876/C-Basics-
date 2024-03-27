@@ -6,8 +6,6 @@ class A
     int a;
     public:
     A(){a=5;}
-    
-    
 };
 class B: public A
 {
