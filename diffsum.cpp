@@ -26,15 +26,13 @@ void B:: getB()
 }
 int B:: sum()
 {
-    int temp;
-    temp=a+b;
-    return temp;
+    return a+b;
 }
 int main()
 {
     int c;
-    A oba; B obb,temp;
-    oba.getA();
+    B obb;
+    obb.getA();
     obb.getB();
     c=obb.sum();
     cout<<endl<<"SUM= "<<c;
