@@ -8,8 +8,6 @@ class empX
     void put_exp();
     empX(){}
     empX(float ex);
-
-
 };
 empX:: empX(float ex)
 {
