@@ -8,10 +8,11 @@ class employe
     float ex, avgx;
     long int cont;
     public:
+    float avgexp();
+    protected:
     void addinfo();
     void printinfo();
     int findID(string str);
-    float avgexp();
 
 };
 class tcEmp: public employe
@@ -26,6 +27,10 @@ class ntEmp: public employe
 {
     int salary;
     public:
+    void searchNtemp();
+    void getNtempdata();
+    void putNtempdata();
+
 };
 int main()
 {
