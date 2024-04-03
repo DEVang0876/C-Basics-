@@ -28,8 +28,6 @@ void A:: put_exp()
     tempF=(temp/12);
     
     cout<<"Employee experience is :"<<tempF;
-    
-
 }
 int main()
 {
