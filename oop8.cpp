@@ -26,8 +26,6 @@ class ntEmp: public employe
 {
     int salary;
     public:
-
-
 };
 int main()
 {
