@@ -7,7 +7,6 @@ int main();
 class Result;
 class Student
 {
-
     char stu_id[7]; string stu_name;
     int sem;
     public:
@@ -31,10 +30,10 @@ void Student :: getdata_stu()
     cout<<endl<<"ENTER STUDENT ID: ";
     cin.ignore();
     cin.getline(stu_id,7);
-    cout<<endl<<"ENTER STUDENT NAME: ";
+    cout<<"ENTER STUDENT NAME: ";
     cin.ignore();
     cin>>stu_name;
-    cout<<endl<<"ENTER SEMESTER: ";
+    cout<<"ENTER SEMESTER: ";
     cin>>sem;
 }
 void Student:: putdata_stu()
@@ -47,22 +46,19 @@ void Student:: getdata_result(Result &ob)
 {
     for(int i=0; i<3; i++)
     {
-    cout<<endl<<"Enter Subject "<<i<<" Name: ";
-    cin.ignore();
+    cout<<endl<<"Enter Subject "<<i+1<<" Name: ";
     cin>>ob.subject_name[i];
-    cout<<endl<<"Enter Subject "<<i<<" Credit";
-    cin.ignore();
+    cout<<"Enter Subject "<<i+1<<" Credit";
     cin>>ob.subject_credit[i];
-    cout<<endl<<"Enter Theory Marks: ";
+    cout<<"Enter Theory Marks: ";
     cin>>ob.th_mark[i];
-    cout<<endl<<"Enter Practical Marks: ";
+    cout<<"Enter Practical Marks: ";
     cin>>ob.pr_mark[i];
     }
 }
 void Student :: putdata_result(Result &ob)
 {
     int grade_point[6],mul_cr_gd=0;
-
     for(int i=0; i<3; i++)
     {
         if(ob.th_mark[i]>=80)
@@ -146,16 +142,16 @@ void Student :: putdata_result(Result &ob)
         }
         else
         {
-            ob.th_grade[i]="FF";
+            ob.pr_grade[i]="FF";
             grade_point[i+3]=0;
         }
         mul_cr_gd+=(grade_point[i+3]*ob.subject_credit[i]);
     }
-    ob.sgpa=(mul_cr_gd)/(ob.subject_credit[0] + ob.subject_credit[1] + ob.subject_credit[2]);
+    ob.sgpa=(mul_cr_gd)/(2*(ob.subject_credit[0] + ob.subject_credit[1] + ob.subject_credit[2]));
     cout<<endl<<setw(36)<<"Theory"<<setw(14)<<"Practical";
-    cout<<endl<<setw(28)<<ob.subject_name[0]; cout<<setw(8)<<ob.th_grade[1];cout<<setw(12)<<ob.pr_grade[0];
-    cout<<endl<<setw(28)<<ob.subject_name[1]; cout<<setw(8)<<ob.th_grade[2];cout<<setw(12)<<ob.pr_grade[1];
-    cout<<endl<<setw(28)<<ob.subject_name[2]; cout<<setw(8)<<ob.th_grade[3];cout<<setw(12)<<ob.pr_grade[2];
+    cout<<endl<<setw(28)<<ob.subject_name[0]; cout<<setw(8)<<ob.th_grade[0];cout<<setw(12)<<ob.pr_grade[0];
+    cout<<endl<<setw(28)<<ob.subject_name[1]; cout<<setw(8)<<ob.th_grade[1];cout<<setw(12)<<ob.pr_grade[1];
+    cout<<endl<<setw(28)<<ob.subject_name[2]; cout<<setw(8)<<ob.th_grade[2];cout<<setw(12)<<ob.pr_grade[2];
     cout<<endl<<endl<<"SGPA = "<<ob.sgpa;
 }
 int main()
