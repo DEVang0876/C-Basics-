@@ -3,18 +3,7 @@
 #include<iostream>
 using namespace std;
 int main();
-class Result;
-class Result
-{
-    int subject_credit, th_mark, pr_mark;
-    string th_grade, pr_grade;
-    char subject_name[3];
-    float sgpa;
-    public:
-    void getdata_result(Result);
-    void putdata_result(Result);
-    
-};
+class Student;
 class Student
 {
     char stu_id[7]; string stu_name;
@@ -22,10 +11,19 @@ class Student
     public:
     void getdata_stu();
     void putdata_stu();
-    friend void Result:: getdata_result(Result);
-    friend void Result:: putdata_result(Result);
+    void getdata_result(Result);
+    void putdata_result(Result);
 };
-
+class Result
+{
+    int subject_credit, th_mark, pr_mark;
+    string th_grade, pr_grade;
+    char subject_name[3];
+    float sgpa;
+    public:
+     friend void  Student :: getdata_result(Result);
+     friend void  Student :: putdata_result(Result);
+};
 void Student :: getdata_stu()
 {
     cout<<endl<<"ENTER STUDENT ID: ";
@@ -41,18 +39,21 @@ void Student:: putdata_stu()
     cout<<endl<<"Student name    :  "; cout<<stu_name;
     cout<<endl<<"Semester        :  "; cout<<sem;
 }
-void Result:: getdata_result(Result)
+void Student:: getdata_result(Result)
 {
     cout<<endl<<"Enter Subject Name: ";
+    cout<<endl<<"Enter Subject Credit";
+    cin>>subject_credit;
     cin.getline(subject_name,3);
     cout<<endl<<"Enter Theory Marks: ";
     cin>>th_mark;
     cout<<endl<<"Enter Practical Marks: ";
     cin>>pr_mark;
 }
-void Result:: putdata_result(Result)
+void Student :: putdata_result(Result)
 {
-
+    cout<<endl<<subject_name; cout<<"         "<<th_grade;cout<<"        "<<pr_grade;
+    
 }
 int main()
 {
