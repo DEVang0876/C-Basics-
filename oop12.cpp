@@ -6,7 +6,7 @@ int main();
 class Result;
 class Student
 {
-    string stu_id, stu_name;
+    char stu_id[7]; string stu_name;
     int sem;
     public:
     void getdata_stu();
@@ -27,7 +27,18 @@ class Result
 };
 void Student :: getdata_stu()
 {
-
+    cout<<endl<<"ENTER STUDENT ID: ";
+    cin.getline(stu_id,7);
+    cout<<endl<<"ENTER STUDENT NAME: ";
+    cin>>stu_name;
+    cout<<endl<<"ENTER SEMESTER: ";
+    cin>>sem;
+}
+void Student:: putdata_stu()
+{
+    cout<<endl<<"Student ID      :  "; 
+    cout<<endl<<"Student name    :  ";
+    cout<<endl<<"Semester        :  ";
 }
 int main()
 {
