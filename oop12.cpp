@@ -4,6 +4,16 @@
 using namespace std;
 int main();
 class Result;
+class Result
+{
+    int subject_credit, th_mark, pr_mark;
+    string subject_naame, th_grade, pr_grade;
+    float sgpa;
+    public:
+    void getdata_result(Result);
+    void putdata_result(Result);
+    
+};
 class Student
 {
     char stu_id[7]; string stu_name;
@@ -11,20 +21,10 @@ class Student
     public:
     void getdata_stu();
     void putdata_stu();
-    void getdata_result(Result);
-    void putdata_result(Result);
-    
+    friend void Result:: getdata_result(Result);
+    friend void Result:: putdata_result(Result);
 };
-class Result
-{
-    int subject_credit, th_mark, pr_mark;
-    string subject_naame, th_grade, pr_grade;
-    float sgpa;
-    public:
-    friend void Student:: getdata_result(Result);
-    friend void Student:: putdata_result(Result);
-    
-};
+
 void Student :: getdata_stu()
 {
     cout<<endl<<"ENTER STUDENT ID: ";
@@ -36,9 +36,19 @@ void Student :: getdata_stu()
 }
 void Student:: putdata_stu()
 {
-    cout<<endl<<"Student ID      :  "; 
-    cout<<endl<<"Student name    :  ";
-    cout<<endl<<"Semester        :  ";
+    cout<<endl<<"Student ID      :  "; cout<<stu_id;
+    cout<<endl<<"Student name    :  "; cout<<stu_name;
+    cout<<endl<<"Semester        :  "; cout<<sem;
+}
+void Result:: getdata_result(Result)
+{
+    cout<<endl<<"Enter Theory Marks: ";
+    cin>>th_mark;
+
+}
+void Result:: putdata_result(Result)
+{
+
 }
 int main()
 {
