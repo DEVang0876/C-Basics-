@@ -7,7 +7,8 @@ class Result;
 class Result
 {
     int subject_credit, th_mark, pr_mark;
-    string subject_naame, th_grade, pr_grade;
+    string th_grade, pr_grade;
+    char subject_name[3];
     float sgpa;
     public:
     void getdata_result(Result);
@@ -42,9 +43,12 @@ void Student:: putdata_stu()
 }
 void Result:: getdata_result(Result)
 {
+    cout<<endl<<"Enter Subject Name: ";
+    cin.getline(subject_name,3);
     cout<<endl<<"Enter Theory Marks: ";
     cin>>th_mark;
-
+    cout<<endl<<"Enter Practical Marks: ";
+    cin>>pr_mark;
 }
 void Result:: putdata_result(Result)
 {
