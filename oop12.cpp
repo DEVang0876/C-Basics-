@@ -13,7 +13,7 @@ class Student
     void putdata_stu();
     void getdata_result(Result);
     void putdata_result(Result);
-    float cal_sgpa(Student &S);
+    
 };
 class Result
 {
@@ -21,7 +21,9 @@ class Result
     string subject_naame, th_grade, pr_grade;
     float sgpa;
     public:
-    friend float Student:: cal_sgpa(Student &s);
+    friend void Student:: getdata_result(Result);
+    friend void Student:: putdata_result(Result);
+    
 };
 void Student :: getdata_stu()
 {
