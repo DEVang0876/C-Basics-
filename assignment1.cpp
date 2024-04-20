@@ -1,3 +1,5 @@
+//23AIML014_DEVANG_DHANDHUKIYA
+
 #include <iostream>
 #include <string>
 
@@ -12,9 +14,8 @@ private:
     bool available;
 
 public:
-    Book(){};
     Book(string t, string a, string i, string g) : title(t), author(a), ISBN(i), genre(g), available(true) {}
-
+    Book(){}
     void displayBookDetails() const {
         cout << "Title: " << title << endl;
         cout << "Author: " << author << endl;
@@ -38,6 +39,14 @@ public:
     string getTitle() const {
         return title;
     }
+
+    string getAuthor() const {
+        return author;
+    }
+
+    string getGenre() const {
+        return genre;
+    }
 };
 
 class Library {
@@ -47,9 +56,8 @@ private:
     int numBooks;
 
 public:
-Book books[MAX_BOOKS];
-    Library() : numBooks(0){}
-
+    Library() : numBooks(0) {}
+    Book books[MAX_BOOKS];
     void addBook(const Book &b) {
         if (numBooks < MAX_BOOKS) {
             books[numBooks++] = b;
@@ -92,7 +100,7 @@ Book books[MAX_BOOKS];
     void searchBooksByAuthor(const string &keyword) const {
         cout << "Search results for author '" << keyword << "':" << endl;
         for (int i = 0; i < numBooks; ++i) {
-            if (books[i].getTitle().find(keyword) != string::npos) {
+            if (books[i].getAuthor().find(keyword) != string::npos) {
                 books[i].displayBookDetails();
             }
         }
@@ -101,7 +109,7 @@ Book books[MAX_BOOKS];
     void searchBooksByGenre(const string &keyword) const {
         cout << "Search results for genre '" << keyword << "':" << endl;
         for (int i = 0; i < numBooks; ++i) {
-            if (books[i].getTitle().find(keyword) != string::npos) {
+            if (books[i].getGenre().find(keyword) != string::npos) {
                 books[i].displayBookDetails();
             }
         }
@@ -156,8 +164,10 @@ void showMenu() {
     cout << "4. Display Available Books" << endl;
     cout << "5. Check Out a Book" << endl;
     cout << "6. Return a Book" << endl;
-    cout << "7. Exit" << endl;
-    cout << "Enter your choice: ";
+    cout << "7. Add a Book" << endl;
+    cout << "8. Remove a Book" << endl;
+    cout << "9. Exit" << endl;
+    cout << "Enter your choice: "<<endl<<"23AIML014_DEVANG_DHANDHUKIYA";
 }
 
 int main() {
@@ -166,7 +176,7 @@ int main() {
     User user("John");
 
     int choice;
-    string keyword, title;
+    string keyword, title, author, ISBN, genre;
     while (true) {
         showMenu();
         cin >> choice;
@@ -201,6 +211,22 @@ int main() {
             user.returnBook(library, title);
             break;
         case 7:
+            cout << "Enter the title of the book: ";
+            getline(cin, title);
+            cout << "Enter the author of the book: ";
+            getline(cin, author);
+            cout << "Enter the ISBN of the book: ";
+            getline(cin, ISBN);
+            cout << "Enter the genre of the book: ";
+            getline(cin, genre);
+            library.addBook(Book(title, author, ISBN, genre));
+            break;
+        case 8:
+            cout << "Enter the title of the book you want to remove: ";
+            getline(cin, title);
+            library.removeBook(title);
+            break;
+        case 9:
             cout << "Thank you for using the Library Management System. Goodbye!" << endl;
             return 0;
         default:
