@@ -12,7 +12,6 @@ class employe
     public:
     void addinfo();
     void printinfo();
-    //int findID(string str);
 
     public:
     string getID(){return id;}
@@ -60,6 +59,7 @@ int tcEmp:: counttc=0;
 void tcEmp:: gettempdata()
 {
     cout<<"Enter Designation : ";
+    cin.ignore();
     cin.getline(dsg, 40);
     cout<<endl<<"Enter Specilization : ";
     cin.getline(spzn, 40);
@@ -119,9 +119,9 @@ int main()
     tcEmp tcobj[500];
     ntEmp ntcobj[500];
     int ne,fid;
-    cout<<endl<<"Enter Number of employs: ";
+    cout<<endl<<"Enter Number of teaaching employs: ";
     cin>>ne;
-    for (int i=0;i<ne;i++)
+    for (int i=0;(i<ne);i++)
     {
         cout<<"Enter data for teaching employe "<<(i+1)<<endl;
         tcobj[i].addinfo();
@@ -130,7 +130,7 @@ int main()
     cout<<endl<<"Enter number of non teaching data you want to add";
     int noe;
     cin>>noe;
-    for(int i=0;i<noe; i++)
+    for(int i=0;(i<noe); i++)
     {
         cout<<"Enter data for non teaching employe "<<(i+1)<<endl;
         ntcobj[i].addinfo();
@@ -173,7 +173,7 @@ int main()
         printerror();
     }
     
-    cout<<endl<<"Press Y to get another employee detail, Press N to exit";
+    cout<<endl<<"Press Y to get another employee detail, Press N to exit : ";
     cin>>ch;
     }while(ch==89);
     
