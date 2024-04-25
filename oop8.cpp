@@ -15,37 +15,13 @@ class employe
     int findID(string str);
 
     public:
+    string getID(){return id;}
     float avgexp();
-    static int count;
-
+    
 };
-int employe:: count=0;
-int employe:: findID(string str)
-{   
-if(str==id)
-{
-return 1;
-}       
-else
-{
-return 0;
-}
-}
-void employe:: addinfo()
-{
-        cout<<"Eneter Employee ID : ";
-        cin>>id;
-        cout<<"Eneter Employee Name : ";
-        cin.ignore();
-        getline(cin,name);
-        cout<<"Eneter Employee's Qualifications : ";
-        getline(cin,qual);
-        cout<<"Eneter Employee's Experiences : ";
-        cin>>ex;
-        cout<<"Eneter Employee Contact Number : ";
-        cin>>cont;
-        count++;
-}
+
+
+
 void employe:: printinfo()
 {
         cout<<endl;cout<<"-------------------------------------"<<endl;
@@ -69,7 +45,9 @@ class tcEmp: public employe
     void searchtemp();
     void gettempdata();
     void puttempdata();
+    static int counttc;
 };
+int tcEmp:: counttc=0;
 void tcEmp:: gettempdata()
 {
     cout<<"Enter Designation : ";
@@ -78,6 +56,7 @@ void tcEmp:: gettempdata()
     cin.getline(spzn, 40);
     cout<<endl<<"Enter Pay Scale : ";
     cin.getline(paysl, 20);
+    counttc++;
 
 }
 void tcEmp:: puttempdata()
@@ -86,6 +65,7 @@ void tcEmp:: puttempdata()
     cout<<endl<<"Spcialization  :"<<spzn;
     cout<<endl<<"Pay Scale      :"<<paysl;
 }
+
 class ntEmp: public employe
 {
     int salary;
@@ -94,17 +74,35 @@ class ntEmp: public employe
     void searchNtemp();
     void getNtempdata();
     void putNtempdata();
+    static int countntc;
 
 };
+int ntEmp:: countntc=0;
 void ntEmp:: getNtempdata()
 {
     cout<<endl<<"Enter Salary : ";
     cin>>salary;
+    countntc++;
 
 }
 void ntEmp:: putNtempdata()
 {
     cout<<"salary         :"<<salary;
+}
+void employe:: addinfo()
+{
+        cout<<"Eneter Employee ID : ";
+        cin>>id;
+        cout<<"Eneter Employee Name : ";
+        cin.ignore();
+        getline(cin,name);
+        cout<<"Eneter Employee's Qualifications : ";
+        getline(cin,qual);
+        cout<<"Eneter Employee's Experiences : ";
+        cin>>ex;
+        cout<<"Eneter Employee Contact Number : ";
+        cin>>cont;
+        
 }
 int main()
 {
@@ -116,10 +114,27 @@ int main()
     cin>>ne;
     for (int i=0;i<ne;i++)
     {
-        cout<<"Enter data for employe "<<(i+1)<<endl;
-        obj[i].addinfo();
+        cout<<"Enter data for teaching employe "<<(i+1)<<endl;
+        tcobj[i].addinfo();
+        tcobj[i].gettempdata();
     }
-    
+    cout<<endl<<"Enter number of non teaching data you want to add";
+    int noe;
+    cin>>noe;
+    for(int i=0;i<noe; i++)
+    {
+        cout<<"Enter data for non teaching employe "<<(i+1)<<endl;
+        ntcobj[i].addinfo();
+        ntcobj[i].getNtempdata();
+    }
+    string xid;
+    cout<<"Enter an employe ID: ";
+    cin>>xid;
+    int flagA=0, flagB=0, flagC=0; 
+    for(int i=0; i<ne; i++)
+    {
+        //if(xid==)
+    }
     
     return 0;
 }
