@@ -37,7 +37,6 @@ void employe:: printinfo()
         cout<<"Qualification  :  "<<qual<<endl;
         cout<<"Experience     :  "<<ex<<" years"<<endl;
         cout<<"Contact Number :  "<<cont<<endl;
-        cout<<"-------------------------------------"<<endl;
 }
 void printerror()
 {
@@ -61,18 +60,20 @@ void tcEmp:: gettempdata()
     cout<<"Enter Designation : ";
     cin.ignore();
     cin.getline(dsg, 40);
-    cout<<endl<<"Enter Specilization : ";
+    cout<<"Enter Specilization : ";
     cin.getline(spzn, 40);
-    cout<<endl<<"Enter Pay Scale : ";
+    cout<<"Enter Pay Scale : ";
     cin.getline(paysl, 20);
     counttc++;
 
 }
 void tcEmp:: puttempdata()
 {
-    cout<<endl<<"Designation    :"<<dsg;
+    cout<<"Designation    :"<<dsg;
     cout<<endl<<"Spcialization  :"<<spzn;
     cout<<endl<<"Pay Scale      :"<<paysl;
+    cout<<endl<<"-------------------------------------"<<endl;
+
 }
 
 class ntEmp: public employe
@@ -89,7 +90,7 @@ class ntEmp: public employe
 int ntEmp:: countntc=0;
 void ntEmp:: getNtempdata()
 {
-    cout<<endl<<"Enter Salary : ";
+    cout<<"Enter Salary : ";
     cin>>salary;
     countntc++;
 
@@ -97,6 +98,7 @@ void ntEmp:: getNtempdata()
 void ntEmp:: putNtempdata()
 {
     cout<<"salary         :"<<salary;
+    cout<<endl<<"-------------------------------------"<<endl;
 }
 void employe:: addinfo()
 {
@@ -115,7 +117,6 @@ void employe:: addinfo()
 }
 int main()
 {
-    employe obj[1000];
     tcEmp tcobj[500];
     ntEmp ntcobj[500];
     int ne,fid;
@@ -139,10 +140,13 @@ int main()
     char ch;
     do
     {
+        cout<<endl<<"Press Y to get another employee detail, Press N to exit : ";
+        cin>>ch;
+
     string xid;
     cout<<"Enter an employe ID: ";
     cin>>xid;
-    int flagA=0, flagB=0, flagC=0; 
+    int flagA=0, flagB=0; //flagC=0; 
     for(int i=0; i<ne;i++)
     {
         if(tcobj[i].findID(xid))
@@ -166,15 +170,18 @@ int main()
             cout<<endl<<flagA;
             break;
         }
+        else
+        {
+            flagB=1;
+        }
     }
     }
-    else if(flagA==0)
+    else if(flagB==1)
     {   
         printerror();
     }
     
-    cout<<endl<<"Press Y to get another employee detail, Press N to exit : ";
-    cin>>ch;
+    
     }while(ch==89);
     
     return 0;
