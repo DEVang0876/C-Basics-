@@ -12,15 +12,24 @@ class employe
     public:
     void addinfo();
     void printinfo();
-    int findID(string str);
+    //int findID(string str);
 
     public:
     string getID(){return id;}
     float avgexp();
-    
+    int findID(string str);
 };
-
-
+int employe:: findID(string str)
+{   
+if(str==id)
+{
+return 1;
+}       
+else
+{
+return 0;
+}
+}
 
 void employe:: printinfo()
 {
@@ -127,14 +136,46 @@ int main()
         ntcobj[i].addinfo();
         ntcobj[i].getNtempdata();
     }
+    char ch;
+    do
+    {
     string xid;
     cout<<"Enter an employe ID: ";
     cin>>xid;
     int flagA=0, flagB=0, flagC=0; 
-    for(int i=0; i<ne; i++)
+    for(int i=0; i<ne;i++)
     {
-        //if(xid==)
+        if(tcobj[i].findID(xid))
+        {
+            tcobj[i].printinfo();
+            tcobj[i].puttempdata();
+            flagA=(1);
+            cout<<endl<<flagA;
+            break;
+        }
     }
+    if(flagA==0)
+    {
+        for(int i=0; i<ne;i++)
+    {
+        if(ntcobj[i].findID(xid))
+        {
+            ntcobj[i].printinfo();
+            ntcobj[i].putNtempdata();
+            flagA=(1);
+            cout<<endl<<flagA;
+            break;
+        }
+    }
+    }
+    else if(flagA==0)
+    {   
+        printerror();
+    }
+    
+    cout<<endl<<"Press Y to get another employee detail, Press N to exit";
+    cin>>ch;
+    }while(ch==89);
     
     return 0;
 }
