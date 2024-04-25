@@ -23,7 +23,7 @@ class employe
 };
 void printerror()
 {
-  cout<<endl<<"*************************";
+        cout<<endl<<"*************************";
         cout<<endl<<"ERROR: ID MATCH NOT FOUND";
         cout<<endl<<"*************************";
 }
