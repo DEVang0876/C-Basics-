@@ -159,7 +159,7 @@ int main()
         break;
     }
     cout<<endl<<"----------------------------------------------------------------";
-    cout<<endl<<"Enter M to goto mian menu, Press any key to exit   ";
+    cout<<endl<<"     Enter M to goto mian menu, Press any key to exit   ";
     char chx;
     cin>>chx;
     if(chx=='M'){goto main_menu;}
