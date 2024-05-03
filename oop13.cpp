@@ -8,12 +8,16 @@ class library
 {
     string title;
     int id;
+    
     public:
+    enum tag {H,E};
+    tag eh;
     void add_title();
     void put_id_tile(){cout<<endl<<id<<"    "<<title;}
 };
 void library:: add_title()
 {
+    
     cout<<endl<<"ID  : ";
     cin>>id; 
     cout<<endl<<"Title  : ";
@@ -26,7 +30,9 @@ class book: public virtual library
     public:
     void add_book_isbn();
     void add_book_stock();
-    void put_book_isbn_copy(){cout<<isbn<<"    "<<"copies  "<<copy;}
+    void put_book_copy(){cout<<"copies  :"<<copy;}
+    void put_isbn(){cout<<isbn;}
+    
 };
 void book:: add_book_isbn()
 {
@@ -45,7 +51,8 @@ class magezine: public virtual library
     public:
     void  add_issn();
     void add_mag_stock();
-    void put_mag_issn_copy(){cout<<issn<<"    "<<"copies  "<<cp;}
+    void put_mag_copy(){cout<<"copies  "<<cp;}
+    void put_issn(){cout<<issn;};
 };
 void magezine:: add_issn()
 {
@@ -69,18 +76,31 @@ class e_resources: public book, public magezine
     void list_mag(e_resources &);
     static int get_count_book(){return count_book;}
     static int get_count_mag(){return count_mag;}
+    void put_doi(){cout<<"DOI :"<<doi;}
+
 };
 int e_resources:: count_book=0;
 int e_resources:: count_mag=0;
 
 void e_resources:: list_book(e_resources &b)
 {
-    b.put_id_tile();cout<<"    ";b.put_book_isbn_copy();
+    b.put_id_tile();cout<<"    ";
+    b.put_isbn();
+    if(b.eh==0)
+    {b.put_book_copy();}
+    else if(b.eh==1)
+    {b.put_doi();}
  
 }
 void e_resources:: list_mag(e_resources &l)
 {
-    l.put_id_tile();cout<<"    ";l.put_mag_issn_copy();
+    l.put_id_tile();cout<<"    ";
+    l.put_issn();
+    if(l.eh==0)
+    {l.put_mag_copy();}
+    else if(l.eh==1)
+    {l.put_doi();}
+
 }
 
 void e_resources:: add_book(e_resources &b)
@@ -92,12 +112,15 @@ void e_resources:: add_book(e_resources &b)
     cin>>ch;
     if(ch=='H')
     {
+        eh=H;
         b.add_book_stock();
     }
     else if(ch=='E')
     {
+        eh=E;
         cout<<endl<<"DOI  : ";
         cin>>doi;
+        
     }
     count_book++;
 }
