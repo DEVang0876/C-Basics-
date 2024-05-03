@@ -121,8 +121,6 @@ void e_resources:: add_magezine(e_resources &m)
 } 
 int main()
 {
-   // library l_m[50];
-    //magezine m[50];
     e_resources ebook[50], emag[50];
     main_menu:
     cout<<endl<<"Enter 1 : Add book data";
@@ -145,14 +143,14 @@ int main()
         emag[mag].add_magezine(emag[mag]);
         break;
     case 3:
-        cout<<endl<<"**** List all books";
+        cout<<endl<<"**** List all books ****";
         for(int x=0; x<book; x++)
         {
            ebook[x].list_book(ebook[x]);
         }
         break;
     case 4:
-        cout<<endl<<"**** List all magezines";
+        cout<<endl<<"**** List all magezines ****";
         for (int y=0; y<mag; y++)
         {
             emag[y].list_mag(emag[mag]);
@@ -161,7 +159,7 @@ int main()
         break;
     }
     cout<<endl<<"----------------------------------------------------------------";
-    cout<<endl<<"Enter M to goto mian menu, Press any key to exit";
+    cout<<endl<<"Enter M to goto mian menu, Press any key to exit   ";
     char chx;
     cin>>chx;
     if(chx=='M'){goto main_menu;}
