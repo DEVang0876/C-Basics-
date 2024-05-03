@@ -26,7 +26,7 @@ class book: public virtual library
     public:
     void add_book_isbn();
     void add_book_stock();
-    void put_book_isbn_copy(){cout<<isbn<<"    "<<"copies"<<copy;};
+    void put_book_isbn_copy(){cout<<isbn<<"    "<<"copies  "<<copy;}
 };
 void book:: add_book_isbn()
 {
@@ -45,6 +45,7 @@ class magezine: public virtual library
     public:
     void  add_issn();
     void add_mag_stock();
+    void put_mag_issn_copy(){cout<<issn<<"    "<<"copies  "<<cp;}
 };
 void magezine:: add_issn()
 {
@@ -54,6 +55,7 @@ void magezine:: add_issn()
 void magezine:: add_mag_stock()
 {
     cout<<endl<<"In stock copies  : ";
+    cin>>cp;
 }
 class e_resources: public book, public magezine
 {
@@ -78,7 +80,7 @@ void e_resources:: list_book(e_resources &b)
 }
 void e_resources:: list_mag(e_resources &l)
 {
-
+    l.put_id_tile();cout<<"    ";l.put_mag_issn_copy();
 }
 
 void e_resources:: add_book(e_resources &b)
@@ -119,8 +121,8 @@ void e_resources:: add_magezine(e_resources &m)
 } 
 int main()
 {
-    library l_m[50];
-    magezine m[50];
+   // library l_m[50];
+    //magezine m[50];
     e_resources ebook[50], emag[50];
     main_menu:
     cout<<endl<<"Enter 1 : Add book data";
