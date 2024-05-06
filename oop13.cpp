@@ -19,14 +19,14 @@ class employe
 };
 int employe:: findID(string str)
 {   
-if(str==id)
-{
-return 1;
-}       
-else
-{
-return 0;
-}
+     if(str==id)
+     {
+        return 1;
+     }       
+     else
+     {
+        return 0;
+     }
 }
 
 void employe:: putdata()

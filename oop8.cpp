@@ -1,6 +1,8 @@
 #include<iostream>
 using namespace std;
 int main();
+class tcEmp;
+class ntEmp;
 class employe
 {
     private:
@@ -15,7 +17,7 @@ class employe
 
     public:
     string getID(){return id;}
-    float avgexp();
+    float avgexp(tcEmp &tc, ntEmp &ntc, int a, int b);
     int findID(string str);
 };
 int employe:: findID(string str)
@@ -115,12 +117,28 @@ void employe:: addinfo()
         cin>>cont;
         
 }
+float employe::avgexp(tcEmp &tc, ntEmp &ntc, int a, int b)
+{
+    float totalExp = 0;
+    for (int i = 0; i < a; i++)
+    {
+        totalExp += tc.ex;
+    }
+    for (int i = 0; i < b; i++)
+    {
+        totalExp += ntc.ex;
+    }
+    return totalExp / (a + b);
+}
+
+
 int main()
 {
     tcEmp tcobj[500];
     ntEmp ntcobj[500];
     int ne,fid;
-    cout<<endl<<"Enter Number of teaaching employs: ";
+    
+    cout<<endl<<"Enter Number of teaching employs: ";
     cin>>ne;
     for (int i=0;(i<ne);i++)
     {
@@ -146,7 +164,7 @@ int main()
     string xid;
     cout<<"Enter an employe ID: ";
     cin>>xid;
-    int flagA=0, flagB=0; //flagC=0; 
+    int flagA=0, flagB=0; 
     for(int i=0; i<ne;i++)
     {
         if(tcobj[i].findID(xid))
