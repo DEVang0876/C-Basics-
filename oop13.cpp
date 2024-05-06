@@ -8,7 +8,6 @@ class employe
     float ex, avgx;
     long int cont;
    
-
     public:
     void getdata();
     void putdata();
@@ -146,7 +145,7 @@ int main()
     string xid;
     cout<<"Enter an employe ID: ";
     cin>>xid;
-    int flagA=0, flagB=0; //flagC=0; 
+    int flagA=0, flagB=0;  
     for(int i=0; i<ne;i++)
     {
         if(tcobj[i].findID(xid))
