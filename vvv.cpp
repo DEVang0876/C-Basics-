@@ -17,19 +17,19 @@ class employe
 
     public:
     string getID(){return id;}
-    float avgexp(tcEmp &tc, ntEmp &ntc, int a, int b);
+    float avgexp(float sum);
     int findID(string str);
 };
 int employe:: findID(string str)
 {   
-if(str==id)
-{
-return 1;
-}       
-else
-{
-return 0;
-}
+   if(str==id)
+   {
+   return 1;
+   }       
+   else
+   {
+   return 0;
+   }
 }
 
 void employe:: printinfo()
@@ -117,25 +117,19 @@ void employe:: addinfo()
         cin>>cont;
         
 }
-float employe::avgexp(tcEmp &tc, ntEmp &ntc, int a, int b)
+float employe::avgexp(float sum)
 {
-    float totalExp = 0;
-    for (int i = 0; i < a; i++)
-    {
-        totalExp += tc.ex;
-    }
-    for (int i = 0; i < b; i++)
-    {
-        totalExp += ntc.ex;
-    }
-    return totalExp / (a + b);
+    
+    sum += ex;
+    
+    return sum;
 }
 int main()
 {
     tcEmp tcobj[500];
     ntEmp ntcobj[500];
     int ne,fid;
-    
+    float temp=0;
     cout<<endl<<"Enter Number of teaching employs: ";
     cin>>ne;
     for (int i=0;(i<ne);i++)
@@ -196,6 +190,16 @@ int main()
     {   
         printerror();
     }
+    for(int q=0; q<ne; q++)
+    {
+        temp+=tcobj[q].avgexp(temp);
+    }
+    for(int w=0; w<noe; w++)
+    {
+        temp+=ntcobj[w].avgexp(temp);
+    }
+    temp=(temp/(noe+ne));
+    cout<<endl<<"Average experience :"<<temp;
     }while(ch==89);
     
     return 0;
