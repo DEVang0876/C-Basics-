@@ -1,24 +1,100 @@
+//23AIML014_DEVANG_DHANDHUKIYA
+//OOPs PRAC 13
+
 #include<iostream>
 using namespace std;
-int main();
+
 class tcEmp;
 class ntEmp;
-class employe
-{
+
+class employe {
     private:
-    string name, id, qual;
-    float ex, avgx;
-    long int cont;
-   
-    public:
-    void getdata();
-    void putdata();
+        string name, id, qual;
+        float ex, avgx;
+        long int cont;
 
     public:
-    string getID(){return id;}
-    float avgexp(tcEmp tc[], ntEmp ntc[], int a, int b);
-    int findID(string str, tcEmp tc[], ntEmp ntc[], int a, int b);
+        void getdata();
+        void putdata();
+        string getID(){ return id; }
+        float avgexp(tcEmp tc[], ntEmp ntc[], int a, int b);
+        int findID(string str, tcEmp tc[], ntEmp ntc[], int a, int b);
 };
+
+void employe::getdata() {
+    cout << "Enter Employee ID: ";
+    cin >> id;
+    cout << "Enter Employee Name: ";
+    cin.ignore();
+    getline(cin, name);
+    cout << "Enter Employee's Qualifications: ";
+    getline(cin, qual);
+    cout << "Enter Employee's Experience: ";
+    cin >> ex;
+    cout << "Enter Employee's Contact Number: ";
+    cin >> cont;
+}
+
+void employe::putdata() {
+    cout << endl;
+    cout << "-------------------------------------" << endl;
+    cout << "Employee Name: " << name << endl;
+    cout << "Qualification: " << qual << endl;
+    cout << "Experience: " << ex << " years" << endl;
+    cout << "Contact Number: " << cont << endl;
+}
+
+class tcEmp: public employe {
+    char dsg[40], spzn[40], paysl[20];
+
+    public:
+        void getdata();
+        void putdata();
+        static int counttc;
+};
+
+int tcEmp::counttc = 0;
+
+void tcEmp::getdata() {
+    cout << "Enter Designation: ";
+    cin.ignore();
+    cin.getline(dsg, 40);
+    cout << "Enter Specialization: ";
+    cin.getline(spzn, 40);
+    cout << "Enter Pay Scale: ";
+    cin.getline(paysl, 20);
+    counttc++;
+}
+
+void tcEmp::putdata() {
+    cout << "Designation: " << dsg << endl;
+    cout << "Specialization: " << spzn << endl;
+    cout << "Pay Scale: " << paysl << endl;
+    cout << "-------------------------------------" << endl;
+}
+
+class ntEmp: public employe {
+    int salary;
+
+    public:
+        void getdata();
+        void putdata();
+        static int countntc;
+};
+
+int ntEmp::countntc = 0;
+
+void ntEmp::getdata() {
+    cout << "Enter Salary: ";
+    cin >> salary;
+    countntc++;
+}
+
+void ntEmp::putdata() {
+    cout << "Salary: " << salary << endl;
+    cout << "-------------------------------------" << endl;
+}
+
 float employe::avgexp(tcEmp tc[], ntEmp ntc[], int a, int b) {
     float totalExp = 0;
     for (int i = 0; i < a; i++) {
@@ -29,6 +105,7 @@ float employe::avgexp(tcEmp tc[], ntEmp ntc[], int a, int b) {
     }
     return totalExp / (a + b);
 }
+
 int employe::findID(string str, tcEmp tc[], ntEmp ntc[], int a, int b) {
     int flagA = 0, flagB = 0;
     for (int i = 0; i < a; i++) {
@@ -58,92 +135,6 @@ int employe::findID(string str, tcEmp tc[], ntEmp ntc[], int a, int b) {
     return (flagA || flagB);
 }
 
-
-void employe:: putdata()
-{
-        cout<<endl;cout<<"-------------------------------------"<<endl;
-        cout<<"Employee Name  :  "<<name<<endl;
-        cout<<"Qualification  :  "<<qual<<endl;
-        cout<<"Experience     :  "<<ex<<" years"<<endl;
-        cout<<"Contact Number :  "<<cont<<endl;
-}
-void printerror()
-{
-        cout<<endl<<"*************************";
-        cout<<endl<<"ERROR: ID MATCH NOT FOUND";
-        cout<<endl<<"*************************";
-}
-class tcEmp: public employe
-{
-    char dsg[40], spzn[40], paysl[20];
-
-    public:
-    void searchtemp();
-    void getdata();
-    void putdata();
-    static int counttc;
-};
-int tcEmp:: counttc=0;
-void tcEmp:: getdata()
-{
-    cout<<"Enter Designation : ";
-    cin.ignore();
-    cin.getline(dsg, 40);
-    cout<<"Enter Specilization : ";
-    cin.getline(spzn, 40);
-    cout<<"Enter Pay Scale : ";
-    cin.getline(paysl, 20);
-    counttc++;
-
-}
-void tcEmp:: putdata()
-{
-    cout<<"Designation    :"<<dsg;
-    cout<<endl<<"Spcialization  :"<<spzn;
-    cout<<endl<<"Pay Scale      :"<<paysl;
-    cout<<endl<<"-------------------------------------"<<endl;
-
-}
-
-class ntEmp: public employe
-{
-    int salary;
-    
-    public:
-    void searchNtemp();
-    void getdata();
-    void putdata();
-    static int countntc;
-
-};
-int ntEmp:: countntc=0;
-void ntEmp:: getdata()
-{
-    cout<<"Enter Salary : ";
-    cin>>salary;
-    countntc++;
-
-}
-void ntEmp:: putdata()
-{
-    cout<<"salary         :"<<salary;
-    cout<<endl<<"-------------------------------------"<<endl;
-}
-void employe:: getdata()
-{
-        cout<<"Eneter Employee ID : ";
-        cin>>id;
-        cout<<"Eneter Employee Name : ";
-        cin.ignore();
-        getline(cin,name);
-        cout<<"Eneter Employee's Qualifications : ";
-        getline(cin,qual);
-        cout<<"Eneter Employee's Experiences : ";
-        cin>>ex;
-        cout<<"Eneter Employee Contact Number : ";
-        cin>>cont;
-        
-}
 int main() {
     tcEmp tcobj[500];
     ntEmp ntcobj[500];
