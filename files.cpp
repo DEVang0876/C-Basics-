@@ -18,7 +18,7 @@ int main()
     cout<<line;
     fin.close();
     ifstream fi;
-    fi.open("demo7.txt");
+    fi.open("cardata.txt");
     fi.getline(line, 55);
 cout<<line;
 fi.close();
